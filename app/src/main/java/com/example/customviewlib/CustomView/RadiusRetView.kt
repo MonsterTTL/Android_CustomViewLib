@@ -18,5 +18,6 @@ class RadiusRetView(private val mContext: Context) : FrameLayout(mContext) {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        //
     }
 }
