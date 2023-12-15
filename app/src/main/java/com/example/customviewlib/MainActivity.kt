@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+
+        mBinding.mRadius.setCornerRadius(topLeft = 40f, bottomLeft = 80f)
 //        setContentView(R.layout.activity_main)
     }
 }
