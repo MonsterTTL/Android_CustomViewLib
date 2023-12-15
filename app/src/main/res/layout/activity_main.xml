@@ -6,13 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.example.customviewlib.CustomView.RadiusRetView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:background="#FFFFFF"
+    <FrameLayout
+        android:layout_width="409dp"
+        android:layout_height="479dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </com.example.customviewlib.CustomView.RadiusRetView>
+        <com.example.customviewlib.CustomView.RadiusRetView
+            android:id="@+id/mRadius"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="112dp"
+            android:background="#C56161">
+
+        </com.example.customviewlib.CustomView.RadiusRetView>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
