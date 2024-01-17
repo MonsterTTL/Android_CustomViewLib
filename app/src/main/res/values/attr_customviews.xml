@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BaseFanSharpView">
+        <attr name="start_rad" format="float"/>
+        <attr name="end_rad" format="float"/>
+        <attr name="baseFanSharp_content_color" format="color"/>
+    </declare-styleable>
+    <declare-styleable name="RadiusRetView">
+        <attr name="leftTop_Rad" format="float"/>
+        <attr name="leftBottom_Rad" format="float"/>
+        <attr name="rightTop_Rad" format="float"/>
+        <attr name="rightBottom_Rad" format="float"/>
+        <attr name="RadiusRet_content_color" format="color"/>
+    </declare-styleable>
+    <declare-styleable name="CircleLineWithText">
+        <attr name="line_Color" format="color"/>
+        <attr name="text_Color" format="color"/>
+        <attr name="text_Size" format="float"/>
+        <attr name="current_Radius" format="float"/>
+    </declare-styleable>
+</resources>

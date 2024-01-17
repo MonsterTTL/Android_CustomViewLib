@@ -4,11 +4,12 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.Paint.ANTI_ALIAS_FLAG
 import android.graphics.Path
-import android.graphics.drawable.ColorDrawable
 import android.util.AttributeSet
 import android.util.Log
-import android.widget.FrameLayout
+import android.view.View
+import com.example.customviewlib.R
 
 /**
  * Created by lujialiang.2612 on 2023/12/13
@@ -16,8 +17,8 @@ import android.widget.FrameLayout
  * despreation：一个四角可以设置为圆角的矩形View
  */
 class RadiusRetView @JvmOverloads constructor(
-    mContext: Context, attrs:AttributeSet? = null, defStyle:Int = 0
-) : FrameLayout(mContext,attrs,defStyle) {
+    mContext: Context, var attrs:AttributeSet? = null, var defStyle:Int = 0
+) : View(mContext,attrs,defStyle) {
 
     //直接用@JvmOverloads秒了
     //constructor(mContext: Context, attrs:AttributeSet?):this(mContext,attrs,0)
@@ -32,25 +33,24 @@ class RadiusRetView @JvmOverloads constructor(
 
 
     //画笔
-    private var mPaint:Paint? = null
+    private var mPaint:Paint = Paint(ANTI_ALIAS_FLAG)
     private val mPath = Path()
-    init {
-        Log.d(TAG, "init")
-        if (background is ColorDrawable) {
-            mPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-                color = (background as ColorDrawable).color
-            }
-            (background as ColorDrawable).color = resources.getColor(android.R.color.transparent)
-        }
-        //invalidate()
-    }
+
 
     //四角圆角的dp值
     private var Radius_TopLeft = 0f
     private var Radius_TopRight = 0f
     private var Radius_BottomLeft = 0f
     private var Radius_BottomRight = 0f
-
+    init {
+        Log.d(TAG, "init")
+        val typedArray = context.obtainStyledAttributes(attrs,R.styleable.RadiusRetView)
+        Radius_TopLeft = typedArray.getFloat(R.styleable.RadiusRetView_leftTop_Rad,0f)
+        Radius_TopRight = typedArray.getFloat(R.styleable.RadiusRetView_rightTop_Rad,0f)
+        Radius_BottomLeft = typedArray.getFloat(R.styleable.RadiusRetView_leftBottom_Rad,0f)
+        Radius_BottomRight = typedArray.getFloat(R.styleable.RadiusRetView_rightBottom_Rad,0f)
+        mPaint.color = typedArray.getColor(R.styleable.RadiusRetView_RadiusRet_content_color,Color.BLUE)
+    }
     //设置圆角弧度
     public fun setCornerRadius(topLeft: Float = 0f, topRight:Float = 0f, bottomLeft:Float = 0f, bottomRight:Float = 0f) {
         Radius_TopLeft = topLeft
@@ -72,7 +72,7 @@ class RadiusRetView @JvmOverloads constructor(
         mPath.reset()
         mPath.addRoundRect(0f,0f,width.toFloat(),height.toFloat(),
             floatArrayOf(Radius_TopLeft,Radius_TopLeft,Radius_TopRight,Radius_TopRight,
-                Radius_BottomLeft,Radius_BottomLeft,Radius_BottomRight,Radius_BottomRight
+                Radius_BottomRight,Radius_BottomRight,Radius_BottomLeft,Radius_BottomLeft
             ),Path.Direction.CW
         )
 

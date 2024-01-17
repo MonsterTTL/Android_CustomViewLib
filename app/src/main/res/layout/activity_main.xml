@@ -6,20 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:layout_width="409dp"
-        android:layout_height="479dp"
+    <Button
+        android:id="@+id/bt_invalidate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="invalidate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.example.customviewlib.CustomView.CircleLineWithText
+        android:id="@+id/RadiusLineWithText"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:line_Color="#AEDD84"
+        app:text_Size="50" />
+
+    <SeekBar
+        android:id="@+id/mSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:max="360"
+        app:layout_constraintBottom_toTopOf="@+id/bt_2Drotate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bt_2Drotate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2D_Rotate"
+        app:layout_constraintEnd_toStartOf="@+id/bt_3drotate"
+        app:layout_constraintStart_toEndOf="@+id/bt_invalidate"
+        app:layout_constraintTop_toTopOf="@+id/bt_invalidate" />
+
+    <Button
+        android:id="@+id/bt_3drotate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3D_Rotate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bt_2Drotate" />
+
+    <SeekBar
+        android:id="@+id/seekBar2"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:backgroundTint="#A33636"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/RadiusLineWithText" />
 
-        <com.example.customviewlib.CustomView.RadiusRetView
-            android:id="@+id/mRadius"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="112dp"
-            android:background="#C56161">
-
-        </com.example.customviewlib.CustomView.RadiusRetView>
-    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
